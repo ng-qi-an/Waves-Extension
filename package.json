@@ -1,14 +1,14 @@
 {
   "name": "fox-ext",
   "displayName": "Fox ext",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fox browser extension companion",
   "author": "Qi An <ng.qi.an@sji.edu.sg>",
   "scripts": {
     "dev": "plasmo dev --target=firefox-mv2",
     "dev:chrome": "plasmo dev",
-    "build": "plasmo build",
-    "package": "plasmo package"
+    "build": "plasmo build --target=firefox-mv2 --zip && plasmo build --target=chrome-mv3 -zip",
+    "package": "plasmo package --target=firefox-mv2 && plasmo package --target=chrome-mv3"
   },
   "dependencies": {
     "plasmo": "0.89.3",
