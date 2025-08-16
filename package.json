@@ -11,6 +11,7 @@
     "package": "plasmo package --target=firefox-mv2 && plasmo package --target=chrome-mv3"
   },
   "dependencies": {
+    "bowser": "^2.11.0",
     "plasmo": "0.89.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
