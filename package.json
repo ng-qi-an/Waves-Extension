@@ -1,8 +1,8 @@
 {
-  "name": "fox-ext",
-  "displayName": "Fox ext",
-  "version": "0.0.2",
-  "description": "Fox browser extension companion",
+  "name": "waves-ext",
+  "displayName": "Waves Extension",
+  "version": "0.1.0",
+  "description": "Waves browser extension companion",
   "author": "Qi An <ng.qi.an@sji.edu.sg>",
   "scripts": {
     "dev": "plasmo dev --target=firefox-mv2",

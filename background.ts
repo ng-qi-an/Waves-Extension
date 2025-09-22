@@ -35,6 +35,7 @@ const socket = io("http://localhost:7323", {
 
 socket.on("connect", () => {
   console.log("Connected to the server, browser:", browserName);
+  socket.emit("registerClient", { socketId: socket.id, name: browserName });
   //socket.emit("getVideoTranscript", {videoId: "JNljnRcu_hE"})
 });
 
@@ -52,6 +53,7 @@ async function getAllTabs() {
     const tabs = await api.tabs.query({});
     const realTabs = tabs.map(tab =>({
       id: browserDiff + tab.id,
+      socketId: socket.id,
       name: tab.title || "Unknown Tab",
       url: tab.url || "Unknown URL",
       favicon: tab.favIconUrl || "",
@@ -107,11 +109,11 @@ socket.on("getPageContent", async (data) => {
       console.log("Target tab IDs from data.pages:", targetTabIds);
     } else {
       // Fall back to active tab if no specific pages requested
-      const activeTab = tabs.find(tab => tab.active);
-      if (activeTab?.id) {
-        targetTabIds = [browserDiff + activeTab.id]; // Use prefixed ID for consistency
-        console.log("Using active tab as fallback:", browserDiff + activeTab.id);
-      }
+      // const activeTab = tabs.find(tab => tab.active);
+      // if (activeTab?.id) {
+      //   targetTabIds = [browserDiff + activeTab.id]; // Use prefixed ID for consistency
+      //   console.log("Using active tab as fallback:", browserDiff + activeTab.id);
+      // }
     }
     
     if (targetTabIds.length === 0) {
